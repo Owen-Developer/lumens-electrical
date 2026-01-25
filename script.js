@@ -158,12 +158,24 @@ if(document.querySelector("form")){
         e.preventDefault();
         const data = new FormData(e.target);
 
-        async function sendEmail(userEmail, text){
-            const dataToSend = { reciever: userEmail, text: text, service: 'nextdesign' };
+        
+        async function sendEmail(){
+            let text = `
+                Hi, message was submited through lumens-electrical.com<br><br>
+    
+                Name: ${data.get("name")}<br><br>
+    
+                Email: ${data.get("email")}<br><br>
+    
+                Phone: ${data.get("phone")}<br><br>
+    
+                Message: ${data.get("message")}<br><br>
+            `;
+            const dataToSend = { text: text };
             try {
-                const response = await fetch('https://email-sender-lkex.vercel.app/api/send-email', {
+                const response = await fetch(`https://servers.nextdesignwebsite.com/lumens/api/lumens-email`, {
                     method: 'POST',
-                    headers: {
+                    headers: { 
                         'Content-Type': 'application/json', 
                     },
                     body: JSON.stringify(dataToSend), 
@@ -171,24 +183,18 @@ if(document.querySelector("form")){
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    console.error('Error:', errorData.error);
+                    console.error('Error:', errorData.message);
                     return;
+                }
+
+                const data = await response.json();
+                if(data.message == "success"){
+                    document.querySelector("form").reset();
                 }
             } catch (error) {
                 console.error('Error posting data:', error);
             }
         }
-        let text = `
-            Hi, message was submited through lumens-electrical.com<br><br>
-
-            Name: ${data.get("name")}<br><br>
-
-            Email: ${data.get("email")}<br><br>
-
-            Phone: ${data.get("phone")}<br><br>
-
-            Message: ${data.get("message")}<br><br>
-        `;
-        sendEmail("jackbaileywoods@gmail.com", text);
+        sendEmail();
     });
 }
