@@ -154,20 +154,41 @@ setInterval(() => {
 }, 4000);
 
 if(document.querySelector("form")){
-  document.querySelector(".form-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-      fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-      }).then(response => {
-      if (response.ok) {
-          form.reset();
-      } else {
-          console.error("NOT OKAY");
-      }
-      });
-  });
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+
+        async function sendEmail(userEmail, text){
+            const dataToSend = { reciever: userEmail, text: text, service: 'nextdesign' };
+            try {
+                const response = await fetch('https://email-sender-lkex.vercel.app/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', 
+                    },
+                    body: JSON.stringify(dataToSend), 
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error:', errorData.error);
+                    return;
+                }
+            } catch (error) {
+                console.error('Error posting data:', error);
+            }
+        }
+        let text = `
+            Hi, message was submited through lumens-electrical.com<br><br>
+
+            Name: ${data.get("name")}<br><br>
+
+            Email: ${data.get("email")}<br><br>
+
+            Phone: ${data.get("phone")}<br><br>
+
+            Message: ${data.get("message")}<br><br>
+        `;
+        sendEmail("jackbaileywoods@gmail.com", text);
+    });
 }
