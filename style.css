@@ -1746,7 +1746,7 @@ i.detail-chevron-active {
     transition: 0.2s ease;
 }
 .btn-detail-cta:hover {
-    background-color: var(--purple-bright);
+    background-color: #be35f0;
 }
 .detail-right {
     width: 100%;
