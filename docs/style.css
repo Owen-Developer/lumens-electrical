@@ -2371,6 +2371,11 @@ img.detail-img {
     line-height: 1.55;
     color: hsl(0, 0%, 80%);
 }
+.blog-para img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 .blog-btn {
     cursor: pointer;
     display: flex;
@@ -2420,10 +2425,29 @@ img.detail-img {
     line-height: 1.55;
     color: hsl(0, 0%, 80%);
 }
+.post-body img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
 .post-body b {
     font-size: 22px;
     color: white;
     font-weight: 500;
+}
+.post-body-img {
+    aspect-ratio: 5 / 3;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.post-body-img img {
+    width: 100%;
+    height: auto;
 }
 
 .admin-container {
