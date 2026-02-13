@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/515deb5b82.js" crossorigin="anonymous"></script>
+    <title>Electricians in Eastbourne | Lumens Electrical</title>
+    <meta name="description" content="Electrician in Eastbourne. Delivering safe, reliable, and modern electrical solutions, combining expertise with trust, speed, and care.">
+</head>
+<body>
+    <div class="admin"></div>
+
+    <div class="banner-container">
+        <div class="banner-bg"></div>
+        <div class="banner-fade"></div>
+        <div class="banner-hori"></div>
+        <div class="banner-img-container">
+            <img src="images/fuse1.jpg" class="hero-img" />
+            <img src="images/fuse2.jpg" class="hero-img" style="opacity: 0;" />
+            <img src="images/fuse3.jpg" class="hero-img" style="opacity: 0;" />
+            <img src="images/hero/hero4.jpg" class="hero-img" style="opacity: 0;" />
+            <img src="images/hero/hero5.jpg" class="hero-img" style="opacity: 0;" />
+            <img src="images/hero/hero6.jpg" class="hero-img" style="opacity: 0;" />
+        </div>
+
+        <h1 class="banner-title">Admin</h1>
+        <div class="banner-trail">
+            <a href="index.html" class="banner-link">Home</a>
+            <div class="banner-link">></div>
+            <div class="banner-link">Admin</div>
+        </div>
+    </div>
+
+    <form action="/api/post" method="post" id="adminForm" class="admin-container width">
+        <div class="admin-label">Title</div>
+        <input type="text" name="title" placeholder="Enter Title" class="admin-input" />
+
+        <div class="admin-label">Hero Image URL</div>
+        <input type="text" name="image" placeholder="Enter URL" class="admin-input" />
+
+        <div class="admin-label">Body</div>
+        <textarea name="body" name="body" placeholder="Enter Body" class="admin-area"></textarea>
+
+        <button class="admin-btn" type="submit">Post Blog</button>
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
