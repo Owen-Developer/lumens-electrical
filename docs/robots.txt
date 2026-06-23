@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin-post.html
+
+Sitemap: https://lumens-electrical.co.uk/sitemap.xml
